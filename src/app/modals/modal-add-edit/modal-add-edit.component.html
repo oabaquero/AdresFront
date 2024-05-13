@@ -1,0 +1,102 @@
+<h1 mat-dialog-title>{{ tituloAccion }} Adquisición</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formAdquisicion">
+    <mat-grid-list cols="2" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Presupuesto</mat-label>
+          <input
+            matInput
+            formControlName="presupuesto"
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Unidad</mat-label>
+          <mat-select formControlName="unidadId">
+            <mat-option *ngFor="let item of listaUnidades" [value]="item.id">
+              {{ item.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Bien o Servicio</mat-label>
+          <mat-select formControlName="bienId">
+            <mat-option *ngFor="let item of listaBienes" [value]="item.id">
+              {{ item.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Cantidad</mat-label>
+          <input
+            matInput
+            formControlName="cantidad"
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Valor Unitario</mat-label>
+          <input
+            matInput
+            formControlName="valorUnitario"
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Proveedor</mat-label>
+          <mat-select formControlName="proveedorId">
+            <mat-option *ngFor="let item of listaProveedores" [value]="item.id">
+              {{ item.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="outline">
+          <mat-label>Documentación</mat-label>
+          <textarea
+            matInput
+            formControlName="documentacion"
+            autocomplete="off"
+          ></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addEditAdquisicion()"
+    [disabled]="formAdquisicion.invalid"
+  >
+    {{ botonAccion }}
+  </button>
+</div>

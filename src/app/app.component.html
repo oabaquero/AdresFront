@@ -1,0 +1,96 @@
+<div style="width: 70%; margin: 40px auto">
+  <h1>Lista de adquisiciones</h1>
+  <button mat-raised-button color="primary" (click)="nuevaAdquisicion()">
+    Nueva Adquisición
+  </button>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="presupuesto">
+        <th mat-header-cell *matHeaderCellDef>Presupuesto</th>
+        <td mat-cell *matCellDef="let element">{{ element.presupuesto }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombreUnidad">
+        <th mat-header-cell *matHeaderCellDef>Unidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombreUnidad }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="nombreBien">
+        <th mat-header-cell *matHeaderCellDef>Bien</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombreBien }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="valorUnitario">
+        <th mat-header-cell *matHeaderCellDef>Valor Unitario</th>
+        <td mat-cell *matCellDef="let element">{{ element.valorUnitario }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="valorTotal">
+        <th mat-header-cell *matHeaderCellDef>Valor Total</th>
+        <td mat-cell *matCellDef="let element">{{ element.valorTotal }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="nombreProveedor">
+        <th mat-header-cell *matHeaderCellDef>Proveedor</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.nombreProveedor }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef style="width: 80px">Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="modalEditarAdquisicion(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
