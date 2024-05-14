@@ -18,10 +18,21 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { ModalAddEditComponent } from './modals/modal-add-edit/modal-add-edit.component';
+import { ModalAddEditComponent } from "./modals/modal-add-edit/modal-add-edit.component";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { HeaderComponent } from "./header/header.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { ModalHistoricoComponent } from "./modals/modal-historico/modal-historico.component";
+import { MatCardModule } from "@angular/material/card";
+import { NgxJsonViewerModule } from "ngx-json-viewer";
 
 @NgModule({
-  declarations: [AppComponent, ModalAddEditComponent],
+  declarations: [
+    AppComponent,
+    ModalAddEditComponent,
+    HeaderComponent,
+    ModalHistoricoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,6 +52,10 @@ import { ModalAddEditComponent } from './modals/modal-add-edit/modal-add-edit.co
     MatIconModule,
     MatDialogModule,
     MatGridListModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatCardModule,
+    NgxJsonViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,6 +7,7 @@ import { AdquisicionService } from "./services/adquisicion.service";
 
 import { MatDialog } from "@angular/material/dialog";
 import { ModalAddEditComponent } from "./modals/modal-add-edit/modal-add-edit.component";
+import { ModalHistoricoComponent } from "./modals/modal-historico/modal-historico.component";
 
 @Component({
   selector: "app-root",
@@ -85,5 +86,13 @@ export class AppComponent implements AfterViewInit, OnInit {
           this.mostrarAdquisiciones();
         }
       });
+  }
+
+  modalHistoricoCambios(dataAdquisicion: Adquisicion) {
+    this.dialog.open(ModalHistoricoComponent, {
+      disableClose: true,
+      width: "1000px",
+      data: dataAdquisicion.id,
+    });
   }
 }

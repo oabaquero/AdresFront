@@ -83,7 +83,6 @@ export class ModalAddEditComponent implements OnInit {
   }
 
   addEditAdquisicion() {
-    console.log(this.formAdquisicion.value);
     const modelo: Adquisicion = {
       id: this.dataAdquisicion == null ? 0 : this.dataAdquisicion.id,
       presupuesto: this.formAdquisicion.value.presupuesto,

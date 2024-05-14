@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Adquisicion } from "../interfaces/adquisicion";
 import { environment } from "../../environments/environment";
+import { Historico } from "../interfaces/historico";
 
 @Injectable({
   providedIn: "root",
@@ -26,5 +27,10 @@ export class AdquisicionService {
 
   delete(adquisicionId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}${adquisicionId}`);
+  }
+  getListHistorico(adquisicionId: number): Observable<Historico[]> {
+    return this.http.get<Historico[]>(
+      `${this.apiUrl}historico/${adquisicionId}`
+    );
   }
 }
